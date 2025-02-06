@@ -1,0 +1,111 @@
+<template>
+  <v-navigation-drawer
+    v-model="drawer"
+    temporary
+  >
+    <v-list>
+      <v-list-item>Login/Register</v-list-item>
+      <v-list-item
+        v-for="(item, index) in items"
+        :key="index"
+        @click="tab = item.name"
+      >
+        <v-list-item-title>{{ item.name }}</v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
+
+  <v-card>
+    <v-toolbar color="green">
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-toolbar-title>PromoZone</v-toolbar-title>
+      <v-spacer />
+      <v-btn icon="mdi-magnify" />
+      <v-btn icon="mdi-dots-vertical" />
+
+      <template #extension>
+        <v-tabs
+          v-model="tab"
+          align-tabs="title"
+        >
+          <v-menu
+            v-for="item in items"
+            :key="item.name"
+            open-on-hover
+            offset-y
+            close-on-content-click
+          >
+            <template #activator="{ props }">
+              <v-tab
+                v-bind="props"
+                :value="item.name"
+              >
+                {{ item.name }}
+              </v-tab>
+            </template>
+
+            <v-list>
+              <v-list-item
+                v-for="subItem in item.subItems"
+                :key="subItem"
+                @click="selectSubItem(item.name, subItem)"
+              >
+                <v-list-item-title>{{ subItem }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-tabs>
+      </template>
+    </v-toolbar>
+
+    <v-tabs-window v-model="tab">
+      <v-tabs-window-item
+        v-for="item in items"
+        :key="item.name"
+        :value="item.name"
+      >
+        <v-card flat>
+          <v-card-text v-text="text" />
+        </v-card>
+      </v-tabs-window-item>
+    </v-tabs-window>
+  </v-card>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const drawer = ref(null);
+const tab = ref(null);
+const text = ref(
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+);
+
+const items = ref([
+  {
+    name: 'Tehnika',
+    subItems: ['Mobiteli', 'Laptopi', 'Televizori'],
+  },
+  {
+    name: 'Prehrana',
+    subItems: ['Voće', 'Povrće', 'Meso'],
+  },
+  {
+    name: 'Dom i vrt',
+    subItems: ['Namještaj', 'Biljke', 'Alati'],
+  },
+  {
+    name: 'Sport i moda',
+    subItems: ['Odjeća', 'Obuća', 'Fitness'],
+  },
+  {
+    name: 'Zdravlje i ljepota',
+    subItems: ['Kozmetika', 'Dodaci prehrani', 'Lijekovi'],
+  },
+]);
+
+const selectSubItem = (mainTab, subItem,) => {
+  tab.value = mainTab; // Keeps the parent tab active
+  console.log(`Selected: ${subItem} from ${mainTab}`);
+};
+</script>
