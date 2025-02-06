@@ -76,12 +76,33 @@
         :key="item.name"
         :value="item.name"
       >
+      <!-- TEXT UNDER TABS
         <v-card flat>
           <v-card-text v-text="text" />
         </v-card>
+      -->
       </v-tabs-window-item>
     </v-tabs-window>
   </v-card>
+
+  <v-container
+    class="bg-surface-variant mb-6"
+  >
+    <v-row
+      align="center"
+      style="height: 500px;"
+      no-gutters
+    >
+      <v-col
+        v-for="n in 1"
+        :key="n"
+      >
+        <v-sheet class="pa-2 ma-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
@@ -90,9 +111,12 @@ import { ref } from 'vue';
 
 const drawer = ref(null);
 const tab = ref(null);
+
+/* TEXT UNDER TABS
 const text = ref(
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 );
+*/
 
 const items = ref([
   {

@@ -1,3 +1,27 @@
+<template>
+  <v-container>
+    <v-row>
+      <v-col
+        v-for="store in stores"
+        :key="store.name"
+        cols="12"
+        md="4"
+      >
+        <v-card>
+          <v-card-title>{{ store.name }}</v-card-title>
+          <v-card-subtitle>{{ store.location }}</v-card-subtitle>
+          <v-card-text>
+            <p>Category: {{ store.category }}</p>
+            <p v-if="store.isFavorite">
+              Favorite Store
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
@@ -24,27 +48,3 @@ onMounted(() => {
   }
 });
 </script>
-
-<template>
-  <v-container>
-    <v-row>
-      <v-col
-        v-for="store in stores"
-        :key="store.name"
-        cols="12"
-        md="4"
-      >
-        <v-card>
-          <v-card-title>{{ store.name }}</v-card-title>
-          <v-card-subtitle>{{ store.location }}</v-card-subtitle>
-          <v-card-text>
-            <p>Category: {{ store.category }}</p>
-            <p v-if="store.isFavorite">
-              Favorite Store
-            </p>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-</template>
