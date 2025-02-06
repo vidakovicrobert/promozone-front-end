@@ -10,7 +10,8 @@
 
 [Fakultet informatike u Puli](https://fipu.unipu.hr/)
 
-Kolegij: Web aplikacije
+Kolegij: [Web aplikacije](https://fipu.unipu.hr/fipu/predmet/webapl)
+
 Mentor: [doc. dr. sc. Nikola Tanković](ntankovic.unipu.hr)
 
 Izgled aplikacije:
