@@ -24,18 +24,6 @@
         <v-list-item-title>Flyers</v-list-item-title>
       </v-list-item>
     </v-list>
-
-    <v-spacer />
-
-    <v-list>
-      <v-list-item
-        v-for="(item, index) in items"
-        :key="index"
-        @click="tab = item.name"
-      >
-        <v-list-item-title>{{ item.name }}</v-list-item-title>
-      </v-list-item>
-    </v-list>
   </v-navigation-drawer>
 
   <v-card>
@@ -62,6 +50,7 @@
               <v-tab
                 v-bind="props"
                 :value="item.name"
+                @click="goToCategory(item.name)"
               >
                 {{ item.name }}
               </v-tab>
@@ -128,23 +117,27 @@ const items = ref([
   },
 ]);
 
-const selectSubItem = (mainTab, subItem,) => {
+const router = useRouter();
+
+const goToCategory = (categoryName) => {
+  const formattedCategory = categoryName.toLowerCase().replace(/\s+/g, '-');
+  router.push(`/stores/category/${formattedCategory}`);
+};
+
+const selectSubItem = (mainTab, subItem) => {
   tab.value = mainTab; // Keeps the parent tab active
   console.log(`Selected: ${subItem} from ${mainTab}`);
 };
 
-// Navigation methods
-const router = useRouter();
-
 const goToLoginRegister = () => {
-  router.push('/login'); // Replace with actual login/register route
+  router.push('/login');
 };
 
 const goToAllStores = () => {
-  router.push('/stores'); // Replace with actual stores route
+  router.push('/stores');
 };
 
 const goToFlyers = () => {
-  router.push('/flyers'); // Replace with actual flyers route
+  router.push('/flyers');
 };
 </script>
