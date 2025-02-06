@@ -1,10 +1,25 @@
 <template>
   <v-navigation-drawer
     v-model="drawer"
+    class="bg-green"
+    theme="dark"
     temporary
   >
+    <template #append>
+      <div class="pa-2">
+        <v-btn block>
+          Logout
+        </v-btn>
+      </div>
+    </template>
+
     <v-list>
       <v-list-item>Login/Register</v-list-item>
+    </v-list>
+
+    <v-spacer />
+
+    <v-list>
       <v-list-item
         v-for="(item, index) in items"
         :key="index"
