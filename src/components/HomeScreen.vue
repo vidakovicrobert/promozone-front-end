@@ -96,23 +96,23 @@ const text = ref(
 
 const items = ref([
   {
-    name: 'Tehnika',
+    name: 'Technology',
     subItems: ['Mobiteli', 'Laptopi', 'Televizori'],
   },
   {
-    name: 'Prehrana',
+    name: 'Groceries',
     subItems: ['Voće', 'Povrće', 'Meso'],
   },
   {
-    name: 'Dom i vrt',
+    name: 'Home and garden',
     subItems: ['Namještaj', 'Biljke', 'Alati'],
   },
   {
-    name: 'Sport i moda',
+    name: 'Sport and fashion',
     subItems: ['Odjeća', 'Obuća', 'Fitness'],
   },
   {
-    name: 'Zdravlje i ljepota',
+    name: 'Health and beauty',
     subItems: ['Kozmetika', 'Dodaci prehrani', 'Lijekovi'],
   },
 ]);
