@@ -14,7 +14,15 @@
     </template>
 
     <v-list>
-      <v-list-item>Login/Register</v-list-item>
+      <v-list-item @click="goToLoginRegister">
+        <v-list-item-title>Login/Register</v-list-item-title>
+      </v-list-item>
+      <v-list-item @click="goToAllStores">
+        <v-list-item-title>All stores</v-list-item-title>
+      </v-list-item>
+      <v-list-item @click="goToFlyers">
+        <v-list-item-title>Flyers</v-list-item-title>
+      </v-list-item>
     </v-list>
 
     <v-spacer />
@@ -88,6 +96,7 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 
 const drawer = ref(null);
@@ -122,5 +131,20 @@ const items = ref([
 const selectSubItem = (mainTab, subItem,) => {
   tab.value = mainTab; // Keeps the parent tab active
   console.log(`Selected: ${subItem} from ${mainTab}`);
+};
+
+// Navigation methods
+const router = useRouter();
+
+const goToLoginRegister = () => {
+  router.push('/login'); // Replace with actual login/register route
+};
+
+const goToAllStores = () => {
+  router.push('/stores'); // Replace with actual stores route
+};
+
+const goToFlyers = () => {
+  router.push('/flyers'); // Replace with actual flyers route
 };
 </script>
