@@ -7,7 +7,10 @@
     <v-btn icon="mdi-dots-vertical" />
 
     <template #extension>
-      <v-tabs v-model="tab" align-tabs="title">
+      <v-tabs
+        v-model="tab"
+        align-tabs="title"
+      >
         <v-menu
           v-for="item in items"
           :key="item.name"
