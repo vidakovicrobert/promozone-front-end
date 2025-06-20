@@ -8,10 +8,16 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
+import LoginRegister from '@/pages/LoginRegister.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+})
+
+router.addRoute({
+  path: '/login',
+  component: LoginRegister,
 })
 
 // Workaround for https://github.com/vitejs/vite/issues/11804

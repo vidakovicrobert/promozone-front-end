@@ -7,7 +7,12 @@
   >
     <template #append>
       <div class="pa-2">
-        <v-btn block @click="logout">Logout</v-btn>
+        <v-btn
+          block
+          @click="logout"
+        >
+          Logout
+        </v-btn>
       </div>
     </template>
 

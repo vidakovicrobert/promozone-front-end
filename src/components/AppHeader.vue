@@ -18,7 +18,7 @@
           offset-y
           close-on-content-click
         >
-          <template #activator="{ props }">
+          <template #activator="{ }">
             <v-tab
               v-bind="props"
               :value="item.name"
@@ -44,13 +44,27 @@
 </template>
 
 <script setup>
-import { ref, watch, defineEmits } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps({
-  modelValue: String,
-  items: Array
+  /**
+   * Currently active tab name
+   * @default ''
+   */
+  modelValue: {
+    type: String,
+    default: ''
+  },
+  /**
+   * Array of tab items
+   * @default []
+   */
+  items: {
+    type: Array,
+    default: () => []
+  }
 })
-const emit = defineEmits(['update:modelValue','select-tab','select-sub','toggle-drawer'])
+const emit = defineEmits([ 'update:modelValue', 'select-tab', 'select-sub', 'toggle-drawer' ])
 
 const tab = ref(props.modelValue)
 watch(tab, val => emit('update:modelValue', val))
